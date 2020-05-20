@@ -1,22 +1,21 @@
 def getMinNum( size ):
-	i = 0
-	while True:
+	i = 1
+	num = "1"
+	while i < size:
+		num = num + "0"
 		i = i + 1
-		if len( str(i) ) >= size:
-			break;
-	return i 
+	return int( num )
 
 assert getMinNum( 2 ) == 10
 assert getMinNum( 3 ) == 100
 
 def getMaxNum( size ):
 	i = 0
-	while True:
+	num = ""
+	while i < size:
+		num = num + "9"
 		i = i + 1
-		if len( str(i) ) >= size+1:
-			i = i - 1
-			break;
-	return i
+	return int( num )
 
 assert getMaxNum( 2 ) == 99
 assert getMaxNum( 3 ) == 999
@@ -55,6 +54,7 @@ assert findLargestPalindromeMinFirst( 2 ) == 9009
 
 def debug( *argv ):
 	if True:
+		print "debug ",
 		for arg in argv:
 			print str(arg),
 		print( " " )
@@ -86,4 +86,4 @@ def findLargestPalindromeMaxFirst( size ):
 
 assert findLargestPalindromeMaxFirst( 2 ) == 9009
 
-print( findLargestPalindromeMaxFirst( 4 ) )
+print( findLargestPalindromeMaxFirst( 5 ) )
