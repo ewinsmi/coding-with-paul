@@ -25,7 +25,7 @@ def isPalindrome( n ):
   isPalindrome = True
   if len( numAsString ) % 2 != 0:
     return False  # odd length so cannot be a palindrome
-  for i in range( 0, len( numAsString )/2 ):
+  for i in range( 0, int(len( numAsString )/2) ):
     if numAsString[ i ] != numAsString[ len(numAsString) - 1  - i ]:
       return False
   return True
@@ -54,9 +54,9 @@ assert findLargestPalindromeMinFirst( 2 ) == 9009
 
 def debug( *argv ):
 	if True:
-		print "debug ",
+		print("debug ", end='')
 		for arg in argv:
-			print str(arg),
+			print(str(arg), end='')
 		print( " " )
 
 def findLargestPalindromeMaxFirst( size ):
