@@ -1,34 +1,31 @@
-def startAndEnd(a, f):
-  starter = a
-  end = f
+def sumOfRange(starter, end):
   listOfNos = range(starter, end + 1)
-  sumOfList = sum(listOfNos)
-  squareOfSum = sumOfList ** 2
-  return squareOfSum
+  return sum(listOfNos)
+
+def square( value):
+  return value ** 2
   
-assert startAndEnd(1,3), 36
-assert startAndEnd(4,6), 225 
+assert sumOfRange(1,3), 6
+assert sumOfRange(4,6), 15
 
 def squareThisList(list):
-  return [i ** 2 for i in list]
+  return [square(i) for i in list]
   
 assert squareThisList((2,3,4)), (4,9,16)
 assert squareThisList((5,6,7)), (25,36,49)
 
-def startAndEndSquares(c, d):
-  starterSquared = c
-  endSquared = d
-  listOfNosSquared = range(starterSquared, endSquared + 1)
-  squareForList = squareThisList(listOfNosSquared)
-  sumOfListSquared = sum(squareForList)
-  return sumOfListSquared
+def squareListThenSum(startOfList, endOfList):
+  myList = range(startOfList, endOfList + 1)
+  listSquared = squareThisList(myList)
+  sumOfSquaredList = sum(listSquared)
+  return sumOfSquaredList
   
-assert startAndEndSquares(1,3), 14
-assert startAndEndSquares(3,5), 50
+assert squareListThenSum(1,3), 14
+assert squareListThenSum(3,5), 50
   
 def differenceOfSquares(x, y):
-  listSum = startAndEnd(x, y)
-  squareOfList = startAndEndSquares(x, y)
+  listSum = square(sumOfRange(x, y))
+  squareOfList = squareListThenSum(x, y)
   difference =  listSum - squareOfList
   return difference 
   
