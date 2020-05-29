@@ -22,11 +22,14 @@ assert getMaxNum( 3 ) == 999
 
 def isPalindrome( n ):
   numAsString = str(n)
-  isPalindrome = True
   if len( numAsString ) % 2 != 0:
     return False  # odd length so cannot be a palindrome
-  for i in range( 0, int(len( numAsString )/2) ):
-    if numAsString[ i ] != numAsString[ len(numAsString) - 1  - i ]:
+  # we will compare first and last character in numAsString and then step inwards comparing as we go
+  maxLoops = int(len( numAsString )/2)
+  for i in range( 0, maxLoops ):
+    leftChar = numAsString[ i ]
+    rightChar = numAsString[ len(numAsString) - 1  - i ]
+    if leftChar != rightChar:
       return False
   return True
 
@@ -69,16 +72,16 @@ def findLargestPalindromeMaxFirst( size ):
 		j = maxNum
 		if largestPalindrome != 0 and i*maxNum < largestPalindrome:
 			debug( "exit", count )
-			return largestPalindrome;
+			return largestPalindrome
 		while j >= minNum:
 			count = count + 1
 			result = i * j
 			if result > largestPalindrome and isPalindrome( result ):
 				largestPalindrome = result
 				debug( "new palindome", count, i, j, largestPalindrome )
-				break;
+				break
 			elif largestPalindrome != 0 and result < largestPalindrome:
-				break;
+				break
 			j = j - 1
 		i = i - 1
 	debug( "return", count )
