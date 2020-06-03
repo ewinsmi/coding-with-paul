@@ -1,6 +1,7 @@
 def nth_prime(n):
     counter = 2
-    for i in range(3, n**2, 2):
+    max = n**2
+    for i in range(3, max, 2):
         k = 1
         while k*k <i:
             k += 2
@@ -10,4 +11,6 @@ def nth_prime(n):
                 counter += 1
             if counter == n:
                 return i
-print(nth_prime(100001))
+assert nth_prime(3), 5
+assert nth_prime(6), 13
+print('hello')
