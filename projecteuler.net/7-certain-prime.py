@@ -9,7 +9,7 @@ def isPrimeFactor( number ):
     else:
       primesList.append(number)
 
-isPrimeFactor(9999999999999999999999999999999999999999999999999999999999)
+isPrimeFactor(9999999)
 
 def whichPrimeIsThis(getIndex):
     return primesList[getIndex + 1]
