@@ -9,19 +9,22 @@ def multiplyList(inputAList):
 assert multiplyList([1,2,3]), 6
 assert multiplyList([4,5,6]), 120
 
-def productOfNextThirteenDigits( inputANumber ):
-    startPoint = 0
+def productOfNextConsecutiveDigits( inputANumber ):
     currentHighestProduct = 0
-    for x in range(int(inputANumber[0]), int(inputANumber[-1])):
-      thisRange = range(int(inputANumber[startPoint]), int(inputANumber[startPoint + 13]))
-      thisProduct = multiplyList(thisRange)
-      startPoint = startPoint + 1
+    low = 0
+    high = len(inputANumber)
+    for x in range(low, high):
+      thisRangeLow = x
+      thisRangeHigh = min(high - 1, x + 13)
+      thisRange = range(inputANumber[thisRangeLow: thisRangeHigh])
+      thisRangeAsList = thisRange.split()
+      thisProduct = multiplyList(thisRangeAsList)
       if thisProduct > currentHighestProduct:
           currentHighestProduct = thisProduct
     return currentHighestProduct
 
 
-print(productOfNextThirteenDigits(initialLongNumber))
+print(productOfNextConsecutiveDigits(initialLongNumber))
 
 
 
