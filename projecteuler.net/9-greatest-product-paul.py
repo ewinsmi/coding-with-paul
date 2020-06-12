@@ -19,10 +19,12 @@ def productOfNextConsecutiveDigits( inputANumber, size ):
       thisProduct = multiplyList(thisRange)
       if thisProduct > currentHighestProduct:
           currentHighestProduct = thisProduct
-      return currentHighestProduct
+    return currentHighestProduct
 
+fileToBeRead = open("demofile.txt", "r")
+print(f.readline())
 
-print(productOfNextConsecutiveDigits(initialLongNumber, 13))
+print(productOfNextConsecutiveDigits(fileToBeRead, 13))
 
 
 
