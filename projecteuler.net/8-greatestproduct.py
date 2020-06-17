@@ -1,3 +1,5 @@
+import os
+
 number = "73167176531330624919225119674426574742355349194934"
 number += "96983520312774506326239578318016984801869478851843"
 number += "85861560789112949495459501737958331952853208805511"
@@ -50,5 +52,47 @@ assert getMaxProduct( "123045607890999", 4 ) == 729
 assert getMaxProduct( "123045607890123", 3 ) == 504
 assert getMaxProduct( "123045607890123", 2 ) == 72
 
+def loadLine( line, myNumbers ):
+  # remove any whitespace at start and end
+  line = line.strip()
+  if ( len(line) == 0 ):
+    myNumbers.append( "" )
+  else:
+    pos = len(myNumbers)-1
+    myNumbers[ pos ] = myNumbers[ pos ] + line 
 
-print( getMaxProduct( number, 13 ) )
+def isValidNumber( number ):
+  if len( number ) == 0:
+    return False
+  try:
+    string_int = int(number)
+  except ValueError:
+    return False
+  return True
+
+assert isValidNumber( "123045607890123" ) == True
+assert isValidNumber( "1230ABC7890123" ) == False
+
+def processNumbers( myNumbers, size ):
+  for number in myNumbers:
+    if isValidNumber( number ):
+      print( getMaxProduct( number, size ) )
+
+def loadAndProcessFile( filename, size ):
+  myfile = open( filename, "r" )
+  line = myfile.readline()
+  loadednumbers = []
+  loadednumbers.append( "" )
+  while line:
+    loadLine( line, loadednumbers )
+    line = myfile.readline()
+  myfile.close()
+  processNumbers( loadednumbers, size )
+
+#print( os.getcwd() )
+loadAndProcessFile( 'projecteuler.net/8-sampledata-happypath.txt', 3 )
+loadAndProcessFile( 'projecteuler.net/8-sampledata-emptyfile.txt', 3 )
+loadAndProcessFile( 'projecteuler.net/8-sampledata-alphanumeric.txt', 3 )
+loadAndProcessFile( 'projecteuler.net/8-sampledata-startwithnewline.txt', 3 )
+loadAndProcessFile( 'projecteuler.net/8-sampledata-endwithoutnewline.txt', 3 )
+# print( getMaxProduct( number, 13 ) )
